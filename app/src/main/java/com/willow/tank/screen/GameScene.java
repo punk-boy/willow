@@ -1,33 +1,55 @@
 package com.willow.tank.screen;
 
+import java.io.IOException;
+import java.util.Random;
+
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 
 import com.willow.tank.ResourceManager;
 
-public final class StageScreen extends View {
-    private Paint paint = new Paint();
 
-    public StageScreen(Context context){
+public final class GameScene extends SurfaceView implements Runnable,SurfaceHolder.Callback{
+
+
+    public GameScene(Context context) {
         super(context);
         setVisibility(INVISIBLE);//------------------------------------------------------------------------
         setFocusable(true);
     }
 
     @Override
-    protected void onDraw(Canvas canvas){
-        paint.setColor(0x333333);
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawRect(0,0,getWidth(),getHeight(),paint);
+    public void surfaceCreated(SurfaceHolder holder) {
+
     }
 
     @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+
+    }
+
+    @Override
+    public void run() {
+
+    }
+
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
-        Log.i("@StageScreen", "onKeyDown"+keyCode);
+        Log.i("@GameoverScreen", "onKeyDown"+keyCode);
+
         int gameAction = 0;
 
         switch (keyCode){
@@ -43,7 +65,7 @@ public final class StageScreen extends View {
             case KeyEvent.KEYCODE_DPAD_CENTER:
             default:
                 // ResourceManager.splashScreen.show();
-                ResourceManager.setCurrentScreen(ResourceManager.gameScene);
+                ResourceManager.setCurrentScreen(ResourceManager.startScreen);
                 break;
         }
         return true;
@@ -52,10 +74,4 @@ public final class StageScreen extends View {
 
     public void show(boolean gameOver){
     }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh){
-        super.onSizeChanged(w, h, oldw, oldh);
-    }
-
 }

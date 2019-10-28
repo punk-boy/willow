@@ -9,10 +9,10 @@ import android.view.View;
 
 import com.willow.tank.ResourceManager;
 
-public final class StageScreen extends View {
+public final class GameoverScreen extends View {
     private Paint paint = new Paint();
 
-    public StageScreen(Context context){
+    public GameoverScreen(Context context){
         super(context);
         setVisibility(INVISIBLE);//------------------------------------------------------------------------
         setFocusable(true);
@@ -20,14 +20,15 @@ public final class StageScreen extends View {
 
     @Override
     protected void onDraw(Canvas canvas){
-        paint.setColor(0x333333);
+        paint.setColor(0x555555);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawRect(0,0,getWidth(),getHeight(),paint);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
-        Log.i("@StageScreen", "onKeyDown"+keyCode);
+        Log.i("@GameoverScreen", "onKeyDown"+keyCode);
+
         int gameAction = 0;
 
         switch (keyCode){
@@ -43,7 +44,7 @@ public final class StageScreen extends View {
             case KeyEvent.KEYCODE_DPAD_CENTER:
             default:
                 // ResourceManager.splashScreen.show();
-                ResourceManager.setCurrentScreen(ResourceManager.gameScene);
+                ResourceManager.setCurrentScreen(ResourceManager.startScreen);
                 break;
         }
         return true;
