@@ -9,10 +9,11 @@ import android.view.View;
 
 import com.willow.tank.ResourceManager;
 
-public final class en extends View {
+public class StartScreen extends View {
+
     private Paint paint = new Paint();
 
-    public StageScreen(Context context){
+    public StartScreen(Context context){
         super(context);
         setVisibility(INVISIBLE);//------------------------------------------------------------------------
         setFocusable(true);
