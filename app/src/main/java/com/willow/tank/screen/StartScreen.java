@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.willow.tank.ResourceManager;
 
-public final class StageScreen extends View {
+public final class en extends View {
     private Paint paint = new Paint();
 
     public StageScreen(Context context){
